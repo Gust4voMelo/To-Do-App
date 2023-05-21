@@ -3,9 +3,14 @@
  */
 package ToDoApp;
 
-public class Main {
+import java.sql.Connection;
+import util.ConnectionFactory;
 
+public class Main {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        
+        Connection c = ConnectionFactory.getConnection();
+        
+        ConnectionFactory.closeConnection(c);
     }
 }
