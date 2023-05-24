@@ -30,7 +30,7 @@ public class Main {
 //        List<Project> projects = projectController.getAll();
 //        System.out.println("Total de projetos = " + projects.size());
         
-        projectController.removeById(3);
+//        projectController.removeById(3);
 
         TaskController taskController = new TaskController();
 //        
@@ -46,7 +46,7 @@ public class Main {
         
         task.setName("Alterar telas da aplicação");
         taskController.update(task);
-        List<Task> tasks = taskController.getAll(2);
+        List<Task> tasks = taskController.getAll(1);
         System.out.println("Total de tarefas = " + tasks.size());
         }
 }
