@@ -91,7 +91,7 @@ public class TaskController {
     }
     
     //Remover uma tarefa
-    public void removeById(int taskId) throws SQLException{
+    public void removeById(int taskId){
         
         String sql = "DELETE FROM tasks WHERE id = ?";
         
@@ -150,7 +150,7 @@ public class TaskController {
             while(resultSet.next()){
                 
                 Task task = new Task();
-                task.setid(resultSet.getInt("id"));
+                task.setId(resultSet.getInt("id"));
                 task.setIdProject(resultSet.getInt("idProject"));
                 task.setName(resultSet.getString("name"));
                 task.setDescription(resultSet.getString("description"));
