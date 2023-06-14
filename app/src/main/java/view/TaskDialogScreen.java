@@ -191,26 +191,35 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         try {
-            Task task = new Task();
-            
-            task.setIdProject(project.getId());
-            
-            task.setName(jTextFieldTaskName.getText());
-            task.setDescription(jTextAreaTaskDescription.getText());
-            task.setNotes(jTextAreaTaskNotes.getText());
-            task.setIsCompleted(false);
-            
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date deadline = null;
-            
-            deadline = dateFormat.parse(jFormattedTextFieldTaskDeadline.getText());
-            task.setDeadline(deadline);
-            
-            controller.save(task);
-            
-            JOptionPane.showMessageDialog(rootPane, "Tafrefa salva com sucesso!");
-            
-            this.dispose();
+            if(!jTextFieldTaskName.getText().isEmpty() && !jFormattedTextFieldTaskDeadline.getText().isEmpty()){
+                
+                Task task = new Task();
+
+                task.setIdProject(project.getId());
+
+                task.setName(jTextFieldTaskName.getText());
+                task.setDescription(jTextAreaTaskDescription.getText());
+                task.setNotes(jTextAreaTaskNotes.getText());
+                task.setIsCompleted(false);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date deadline = null;
+
+                deadline = dateFormat.parse(jFormattedTextFieldTaskDeadline.getText());
+                task.setDeadline(deadline);
+
+                controller.save(task);
+
+                JOptionPane.showMessageDialog(rootPane, "Tafrefa salva com sucesso!");
+
+                this.dispose();
+                
+            } else {
+                
+                JOptionPane.showMessageDialog(rootPane, 
+                        "A tarefa não foi salva pois existem campos obrigatórios a serem preenchidos");
+                
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
